@@ -95,6 +95,10 @@ select {
   border-radius: 1em;
 }
 
+.horlogeSelectie__knop:hover {
+  background-color: #a37e2a
+}
+
 @media screen and (min-width: 60em) {
   #uitvoer {
     display: grid;

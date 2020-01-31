@@ -73,6 +73,21 @@ const maakOpsomming = (array) => {
   return string;
 }
 
+// een winkelwagen object
+let winkelwagen = {
+  items: [],
+
+  haalItemsOp: function() {
+    let bestelling;
+  },
+
+  toevoegen: function(el) {
+    this.items.push(el);
+    document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+  }
+
+}
+
 // object dat de boeken uitvoert en sorteert
 // eigenschappen: data (sorteer)kenmerk
 // methods: sorteren() en uitvoeren()
@@ -138,6 +153,9 @@ let sorteerHorlogeObj = {
       let knop = document.createElement('button');
       knop.className = 'horlogeSelectie__knop';
       knop.innerHTML = 'Koop';
+      knop.addEventListener('click', () => {
+        winkelwagen.toevoegen(horloge);
+      })
 
       // de element toevoegen
       sectie.appendChild(afbeelding);
