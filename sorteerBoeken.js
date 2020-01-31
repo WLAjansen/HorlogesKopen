@@ -137,7 +137,7 @@ let sorteerHorlogeObj = {
       // knop toevoegen bij de Prijs
       let knop = document.createElement('button');
       knop.className = 'horlogeSelectie__knop';
-      knop.innerHTML = 'voeg toe aan de <br>winkelwagen';
+      knop.innerHTML = 'Koop';
 
       // de element toevoegen
       sectie.appendChild(afbeelding);
