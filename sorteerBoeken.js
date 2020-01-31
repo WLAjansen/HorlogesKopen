@@ -134,6 +134,11 @@ let sorteerHorlogeObj = {
       prijs.className = 'horlogeSelectie__prijs';
       prijs.textContent = horloge.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
 
+      // knop toevoegen bij de Prijs
+      let knop = document.createElement('button');
+      knop.className = 'horlogeSelectie__knop';
+      knop.innerHTML = 'voeg toe aan de <br>winkelwagen';
+
       // de element toevoegen
       sectie.appendChild(afbeelding);
       main.appendChild(model);
@@ -141,6 +146,7 @@ let sorteerHorlogeObj = {
       main.appendChild(overig);
       sectie.appendChild(main);
       sectie.appendChild(prijs);
+      prijs.appendChild(knop);
       document.getElementById('uitvoer').appendChild(sectie);
     });
   }

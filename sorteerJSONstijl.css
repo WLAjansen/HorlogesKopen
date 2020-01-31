@@ -16,6 +16,26 @@ select {
   background: url(https://pbs.twimg.com/profile_images/1892578420/rolex_logo_256_400x400.png) 96% / 15% no-repeat #EEE;
 }
 
+.winkelwagen {
+  width: 3em;
+  height: 3em;
+  background-image: url('https://justifiedbags.nl/wp-content/uploads/2017/10/shopping_bag.png');
+  background-size: contain;
+  float: right;
+  margin-right: 3em;
+}
+
+.winkelwagen__aantal:not(:empty) {
+  background-color: #f00;
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  top: -.5em;
+  line-height: .5em;
+  padding: .5em;
+  border-radius: 50%;
+}
+
 .select-button {
   padding-bottom: 50px;
 }
@@ -62,6 +82,10 @@ select {
 
 .horlogeSelectie__prijs {
   font-size: 2em;
+}
+
+.horlogeSelectie__knop {
+  display: block;
 }
 
 @media screen and (min-width: 60em) {
