@@ -79,19 +79,18 @@ let winkelwagen = {
 
   haalItemsOp: function() {
     let bestelling;
-    if ( localStorage.getItem('besteldeHorloges') == null ) {
+    if ( localStorage.getItem('besteldeHorloge') == null ) {
       bestelling = [];
     } else {
-      bestelling JSON.parse(localStorage.getItem('besteldeHorloges'));
-      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
+      bestelling = JSON.parse(localStorage.getItem('besteldeHorloge'));
     }
     return bestelling;
   },
 
   toevoegen: function(el) {
-    this.items = this.haalItemsOp();
+    this.items = this.haalItemsOp()
     this.items.push(el);
-    localStorage.setItem('besteldeHorloges', JSON.stringify(this.items));
+    localStorage.setItem('besteldeHorloge', JSON.stringify(this.items));
     document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
   }
 
