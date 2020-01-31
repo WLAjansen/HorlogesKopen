@@ -79,14 +79,25 @@ let winkelwagen = {
 
   haalItemsOp: function() {
     let bestelling;
+    if ( localStorage.getItem('besteldeHorloges') == null ) {
+      bestelling = [];
+    } else {
+      bestelling JSON.parse(localStorage.getItem('besteldeHorloges'));
+      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
+    }
+    return bestelling;
   },
 
   toevoegen: function(el) {
+    this.items = this.haalItemsOp();
     this.items.push(el);
+    localStorage.setItem('besteldeHorloges', JSON.stringify(this.items));
     document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
   }
 
 }
+
+winkelwagen.haalItemsOp();
 
 // object dat de boeken uitvoert en sorteert
 // eigenschappen: data (sorteer)kenmerk
