@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Sorteer boeken</title>
+  <meta name="author" content="Theo Den Blanken">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="sorteerJSONstijl.css"
+ </head>
+
+ <body lang="nl">
+   <h1>Een selectie van horloges</h1>
+   <div class="select-button">
+   <select id=kenmerk>
+     <option value="model" selected>Model</option>
+     <option value="merk">Merk</option>
+     <option value="jsDatum">Gemaakt</option>
+     <option value="maat">Maat</option>
+     <option value="kleur">Kleur</option>
+     <option value="prijs">Prijs</option>
+   </select>
+
+  <!-- radiobuttons voor oplopend en aflopend sorteren -->
+  <label><input type="radio" name="oplopend" value="1">oplopend</label>
+  <label><input type="radio" name="oplopend" value="-1">aflopend</label>
+</div>
+
+   <div id="uitvoer"></div>
+   <script src="sorteerBoeken.js" charset="utf-8"></script>
+
+ </script>
+   </body>
+   </html>

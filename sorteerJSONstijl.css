@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
+
+body {
+  font-family: "Montserrat";
+}
+
+select {
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(https://pbs.twimg.com/profile_images/1892578420/rolex_logo_256_400x400.png) 96% / 15% no-repeat #EEE;
+}
+
+.select-button {
+  padding-bottom: 50px;
+}
+
+.horlogeSelectie__cover {
+  max-width: 200px;
+}
+
+.horlogeSelectie__rij--accent {
+  background-color: #def;
+}
+.horlogeSelectie__data-cel {
+  padding: 1em;
+  vertical-align: top;
+}
+.horlogeSelectie__data-cel:nth-child(3) {
+  padding: 0;
+}
+
+.horlogeSelectie {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 1em;
+  margin-bottom: 1em;
+}
+.horlogeSelectie:nth-child(even) {
+  background-color: #eee;
+}
+.horlogeSelectie__main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: .5em 0;
+}
+
+.horlogeSelectie__model {
+  margin: 0;
+}
+
+.horlogeSelectie__overig {
+  margin: 0;
+  font-size: .8em;
+  color: #444;
+}
+
+.horlogeSelectie__prijs {
+  font-size: 2em;
+}
+
+@media screen and (min-width: 60em) {
+  #uitvoer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2em;
+  }
+  .horlogeSelectie:nth-child(even) {
+    background-color: inherit;
+  }
+  .horlogeSelectie:nth-child(4n+2),
+  .horlogeSelectie:nth-child(4n+3) {
+    background-color: #eee;
+  }
+}
