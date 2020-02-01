@@ -49,13 +49,10 @@ let winkelwagen = {
   // de data in een tabel uitvoeren
   uitvoeren: function() {
     // eerst de uitvoer leegmaken
-    document.getElementById('uitvoer').innerHTML = "";
+    document.getElementById('bestelling').innerHTML = "";
     this.items.forEach( horloge => {
       let sectie = document.createElement('section');
       sectie.className = 'besteldHorloge';
-      // main element met alle info behalve prijs en afbeelding
-      let main = document.createElement('main');
-      main.className = 'besteldHorloge__main';
 
       // cover maken
       let afbeelding = document.createElement('img');
@@ -74,13 +71,15 @@ let winkelwagen = {
       prijs.textContent = horloge.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
 
       // verwijderknop toevoegen
+      let verwijder = document.createElement('div');
+      verwijder.className = 'besteldHorloge__verwijder';
 
       // de element toevoegen
       sectie.appendChild(afbeelding);
-      main.appendChild(model);
-      sectie.appendChild(main);
+      sectie.appendChild(model);
       sectie.appendChild(prijs);
-      document.getElementById('uitvoer').appendChild(sectie);
+      sectie.appendChild(verwijder);
+      document.getElementById('bestelling').appendChild(sectie);
     });
   }
 }

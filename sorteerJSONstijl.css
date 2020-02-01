@@ -100,6 +100,47 @@ select {
   background-color: #a37e2a
 }
 
+
+
+/* bestelpagina */
+
+.besteldHorloge {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-gap: 2em;
+  margin-bottom: 5em;
+}
+
+.besteldHorloge__cover {
+ max-width: 50px;
+}
+
+.besteldHorloge__titel {
+  font-weight: norma;
+  font-size: 1em;
+}
+
+.besteldHorloge__verwijder {
+  width: 2em;
+  height: 2em;
+  background-image: url(img/croix-noir.png);
+  background-size: cover;
+  cursor: pointer;
+  border-radius: .3em;
+  background-color: transparent;
+  transition: background-color 1s ease-out;
+}
+.besteldHorloge__verwijder:hover {
+  background-color: #f66;
+}
+
+@media screen and (min-width: 40em) {
+  .besteldHorloge {
+   max-width: 40em;
+   margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 60em) {
   #uitvoer {
     display: grid;
@@ -113,22 +154,4 @@ select {
   .horlogeSelectie:nth-child(4n+3) {
     background-color: #eee;
   }
-}
-
-/* bestelpagina */
-
-.besteldHorloge {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-gap: 2em;
-  margin-bottom: 5em;
-}
-
-.besteldHorloge__cover {
- max-width: 50px;
-}
-
-.besteldHorloge__titel {
-  font-weight: norma;
-  font-size: 1em;
 }
