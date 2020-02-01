@@ -23,6 +23,7 @@ select {
   background-size: contain;
   float: right;
   margin-right: 3em;
+  cursor: pointer;
 }
 
 .winkelwagen__aantal:not(:empty) {

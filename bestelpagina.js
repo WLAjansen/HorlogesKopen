@@ -1,33 +1,5 @@
 
 
-// JSON importeren
-
-let xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    sorteerHorlogeObj.data = JSON.parse(this.responseText);
-    sorteerHorlogeObj.voegJSdatumIn();
-    sorteerHorlogeObj.sorteren();
-  }
-}
-xmlhttp.open('GET', "horloges.json", true);
-xmlhttp.send();
-
-// een tabelkop in markup uitvoeren uit een array
-const maakTabelKop = (arr) => {
-  let kop = "<table class='horlogeSelectie'><tr>";
-  arr.forEach((item) => {
-    kop += "<th>" + item + "</th>";
-  });
-  kop += "</tr>";
-  return kop;
-}
-
-// een tabelrij maken
-// boolean geeft aan de rij
-// uitvoer string met markup
-
-
 
 // function die van een mount-string een nummer maakTabelKop
 // waarbij januari een 0 geeft
@@ -53,25 +25,6 @@ const geeftMaandNummer = (maand) => {
   return nummer;
 }
 
-// functie dieeen string van maand jaar omzet in een date-object
-const maakJSdatum = (maandJaar) => {
-  let mjArray = maandJaar.split("");
-  let datum = new Date(mjArray[1], geeftMaandNummer(mjArray[0]));
-  return datum;
-}
-
-// functie maakt van een array een opsomming met ', ' en ' en'
-const maakOpsomming = (array) => {
-  let string = "";
-  for(let i=0; i<array.length; i++) {
-    switch (i) {
-      case array.length-1 : string += array[i]; break;
-      case array.length-2 : string += array[i] + " en"; break;
-      default: string += array[i] + ", ";
-    }
-  }
-  return string;
-}
 
 // een winkelwagen object
 let winkelwagen = {
@@ -91,43 +44,15 @@ let winkelwagen = {
   toevoegen: function(el) {
     this.items = this.haalItemsOp()
     this.items.push(el);
-    localStorage.setItem('BesteldeHorloges', JSON.stringify(this.items));
+    localStorage.
     document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
-  }
-
-}
-
-winkelwagen.haalItemsOp();
-
-// object dat de boeken uitvoert en sorteert
-// eigenschappen: data (sorteer)kenmerk
-// methods: sorteren() en uitvoeren()
-let sorteerHorlogeObj = {
-  data: "", // komt van xmlhttp.onreadystatechange
-
-  kenmerk: "model",
-
-  // sorteervolgorde en factor
-  oplopend: 1,
-
-  // een datumObject toevoegen aan this.data uit de string uitgave
-  voegJSdatumIn: function() {
-    this.data.forEach((item) => {
-      item.jsDatum = maakJSdatum(item.uitgave);
-    });
-  },
-
-  // data sorteren
-  sorteren: function() {
-    this.data.sort( (a,b) => a[this.kenmerk] > b[this.kenmerk] ? 1*this.oplopend : -1*this.oplopend );
-    this.uitvoeren(this.data);
   },
 
   // de data in een tabel uitvoeren
-  uitvoeren: function(data) {
+  uitvoeren: function() {
     // eerst de uitvoer leegmaken
     document.getElementById('uitvoer').innerHTML = "";
-    data.forEach( horloge => {
+    this.items.forEach( horloge => {
       let sectie = document.createElement('section');
       sectie.className = 'horlogeSelectie';
       // main element met alle info behalve prijs en afbeelding
@@ -181,15 +106,5 @@ let sorteerHorlogeObj = {
   }
 }
 
-// keuze voorsoteer opties, hier is een fout
-document.getElementById('kenmerk').addEventListener('change', (e) => {
-  sorteerHorlogeObj.kenmerk = e.target.value;
-  sorteerHorlogeObj.sorteren();
-});
-
-document.getElementsByName('oplopend').forEach((item) => {
-  item.addEventListener('click', (e)=> {
-    sorteerHorlogeObj.oplopend = parseInt(e.target.value);
-    sorteerHorlogeObj.sorteren();
-  })
-})
+winkelwagen.haalItemsOp();
+winkelwagen.uitvoeren();
