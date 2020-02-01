@@ -114,3 +114,21 @@ select {
     background-color: #eee;
   }
 }
+
+/* bestelpagina */
+
+.besteldHorloge {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 2em;
+  margin-bottom: 5em;
+}
+
+.besteldHorloge__cover {
+ max-width: 50px;
+}
+
+.besteldHorloge__titel {
+  font-weight: norma;
+  font-size: 1em;
+}
