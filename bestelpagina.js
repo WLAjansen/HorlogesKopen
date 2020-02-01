@@ -45,6 +45,24 @@ let winkelwagen = {
   },
 
 
+// doorloop van alle items
+  verwijderItem: function(ean) {
+     this.items.forEach((item,index) => {
+       if ( item.ean == ean ) {
+         this.items.splice(index,1);
+       }
+     })
+     // local storage bijwerken
+     localStorage.setItem('BesteldeHorloges', JSON.stringify(this.items));
+     if(this.items.length>0) {
+     document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+   } else {
+     document.querySelector('.winkelwagen__aantal').innerHTML = "";
+   }
+     this.uitvoeren();
+  },
+
+
 
   // de data in een tabel uitvoeren
   uitvoeren: function() {
@@ -73,6 +91,9 @@ let winkelwagen = {
       // verwijderknop toevoegen
       let verwijder = document.createElement('div');
       verwijder.className = 'besteldHorloge__verwijder';
+      verwijder.addEventListener('click', () => {
+        this.verwijderItem(horloge.ean);
+      })
 
       // de element toevoegen
       sectie.appendChild(afbeelding);
