@@ -83,9 +83,9 @@ let winkelwagen = {
       bestelling = [];
     } else {
       bestelling = JSON.parse(localStorage.getItem('BesteldeHorloges'));
-      bestelling.forEach((item => {
+      bestelling.forEach(item => {
          this.items.push(item);
-      })
+      });
 
       this.uitvoeren();
     }
