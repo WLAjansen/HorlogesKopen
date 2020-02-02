@@ -116,10 +116,11 @@ let winkelwagen = {
     sectie.className = 'besteldHorloge';
     // tekst voor totaal Prijs
     let totaalTekst = document.createElement('div');
-    totaalTekst.className = 'besteldHorloge__totaal-prijs';
+    totaalTekst.className = 'besteldHorloge__totaal-tekst';
     totaalTekst.innerHTML = 'Totaal: ';
 
     let totaalPrijs = document.createElement('div');
+    totaalPrijs.className = 'besteldHorloge__totaal-prijs';
     totaalPrijs.textContent = this.totaalPrijsBerekenen().toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
 
     sectie.appendChild(totaalTekst);
