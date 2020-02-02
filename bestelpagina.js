@@ -64,7 +64,7 @@ let winkelwagen = {
 
   totaalPrijsBerekenen: function() {
     let totaal = 0;
-    this.items.forEach (horloge) => {
+    this.items.forEach( horloge => {
        totaal += horloge.prijs;
     });
     return totaal;
@@ -110,10 +110,21 @@ let winkelwagen = {
       sectie.appendChild(verwijder);
       document.getElementById('bestelling').appendChild(sectie);
     });
+
+    // na de opsomming ook de totaalprijs toevoegen
     let sectie = document.createElement('section');
     sectie.className = 'besteldHorloge';
     // tekst voor totaal Prijs
+    let totaalTekst = document.createElement('div');
+    totaalTekst.className = 'besteldHorloge__totaal-prijs';
+    totaalTekst.innerHTML = 'Totaal: ';
 
+    let totaalPrijs = document.createElement('div');
+    totaalPrijs.textContent = this.totaalPrijsBerekenen().toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
+
+    sectie.appendChild(totaalTekst);
+    sectie.appendChild(totaalPrijs);
+    document.getElementById('bestelling').appendChild(sectie);
     // winkelwagen aantal uitvoeren
     if (this.items.length > 0) {
       document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
