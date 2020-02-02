@@ -83,7 +83,7 @@ let winkelwagen = {
       bestelling = [];
     } else {
       bestelling = JSON.parse(localStorage.getItem('BesteldeHorloges'));
-      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
+      this.uitvoeren;
     }
     return bestelling;
   },
@@ -92,7 +92,15 @@ let winkelwagen = {
     this.items = this.haalItemsOp()
     this.items.push(el);
     localStorage.setItem('BesteldeHorloges', JSON.stringify(this.items));
-    document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+    this.uitvoeren();
+  },
+
+  uitvoeren: function() {
+    if (this.items.length > 0) {
+      document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+    } else {
+      document.querySelector('.winkelwagen__aantal').innerHTML = '';
+    }
   }
 
 }

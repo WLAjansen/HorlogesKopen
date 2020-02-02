@@ -36,7 +36,6 @@ let winkelwagen = {
       bestelling = [];
     } else {
       bestelling = JSON.parse(localStorage.getItem('BesteldeHorloges'));
-      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
     }
     bestelling.forEach( item => {
       this.items.push(item);
@@ -50,6 +49,7 @@ let winkelwagen = {
      this.items.forEach((item,index) => {
        if ( item.ean == ean ) {
          this.items.splice(index,1);
+         ean = 20;
        }
      })
      // local storage bijwerken
@@ -57,9 +57,17 @@ let winkelwagen = {
      if(this.items.length>0) {
      document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
    } else {
-     document.querySelector('.winkelwagen__aantal').innerHTML = "";
+     document.querySelector('.winkelwagen__aantal').innerHTML = '';
    }
-     this.uitvoeren();
+   this.uitvoeren();
+  },
+
+  totaalPrijsBerekenen: function() {
+    let totaal = 0;
+    this.items.forEach (horloge) => {
+       totaal += horloge.prijs;
+    });
+    return totaal;
   },
 
 
@@ -102,6 +110,16 @@ let winkelwagen = {
       sectie.appendChild(verwijder);
       document.getElementById('bestelling').appendChild(sectie);
     });
+    let sectie = document.createElement('section');
+    sectie.className = 'besteldHorloge';
+    // tekst voor totaal Prijs
+
+    // winkelwagen aantal uitvoeren
+    if (this.items.length > 0) {
+      document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+    } else {
+      document.querySelector('.winkelwagen__aantal').innerHTML = '';
+    }
   }
 }
 
